@@ -2,8 +2,7 @@
 
 # Lossy Compresion Scheme
 
-******************lossy_intro*************************
-
+![lossy](https://github.com/harshilbhatt2001/signal-processing/blob/mp3_enc/processing/mp3_encoder/images/lossy_intro.JPG)
 Goal: reduce number of bits to represent original signal $$x[n]$$
 
 Lossy compression: $$x[n]    $ \neq $    y[n]$$
@@ -12,7 +11,7 @@ We need to put noise where it is not perceptible to the human ear
 
 ## Block Diagram MP# Encoding
 
-*****************************block_diag********************************
+![block_diag](https://github.com/harshilbhatt2001/signal-processing/blob/mp3_enc/processing/mp3_encoder/images/block_diag.JPG)
 
 Input signal enters a bank of 32 paraller subband filters. There are 32 parallel filters that subdivide the input signal into 32 independent channels that span the full spectral range of the input. Each channel is the quantized, and the quantized sample are then formatted and encoded in a continuous bit stream.
 
@@ -31,13 +30,13 @@ Masking in the human ear takes place within critical bands, and critical bands a
 
 ## Subband Filtering
 
-*******************insert subband filtering image**********************
+![subband filtering image](https://github.com/harshilbhatt2001/signal-processing/blob/mp3_enc/processing/mp3_encoder/images/subband_filtering.JPG)
 
 the input is split across a filter bank that contains 32 filters isolating different parts of the spectrum. These filters are implemented as 512 tap FIR's, and they're followed by 32 times down sampler to provide the independence of band samples. The filter prototype is a simple low pass with a cut off frequency of $$\frac{\pi}{64}$$ and a total bandwidth of $$\frac{\pi}{32}$$. The different sub bands are obtained by modulating the base filter with a cosine at multiples of $$\frac{\pi}{64}$$.
 
 Each branch in the filter bank comprises an FIR filter of length 512 and a 32 time down sampler here. What this means of course is that 31 out of 32 output samples of this filter are discarded, and so this is of course a very wasteful implementation.
 
-*******************insert optimized subband filtering image**********************
+![optimized subband filtering image](https://github.com/harshilbhatt2001/signal-processing/blob/mp3_enc/processing/mp3_encoder/images/optimized_subband_filtering.JPG)
 
 
 ## Eficient Implementation
@@ -45,8 +44,8 @@ Each branch in the filter bank comprises an FIR filter of length 512 and a 32 ti
 * We will use a length-512 circular buffer b[k]
 * Step 1: Shift in 32 input audiosamples into the circular buffer, newest first
 * Step 2: Compute r[k] = h[k]b[k]
-* Step 3: Compute c[q] = *************c[q] img*****************
-* Step 4: Compute the subband outputs as *************ci[m] img*****************
+* Step 3: Compute c[q] = ![c[q] img](https://github.com/harshilbhatt2001/signal-processing/blob/mp3_enc/processing/mp3_encoder/images/c%5Bq%5D.JPG)
+* Step 4: Compute the subband outputs as ![si(m) img](https://github.com/harshilbhatt2001/signal-processing/blob/mp3_enc/processing/mp3_encoder/images/si%5Bm%5D.JPG)
 
 ## Quantization
 
@@ -62,4 +61,4 @@ There are 36 samples per band and per frame in the MP3 standard. And so Since al
 
 The actual quantization is performed according to this formula where b is the number of bits as provided by the psychoacoustic model, and Qa and Qb functions of the number bits are parameters that are encoded inside the MP3 standard.
 
-*********************quant img***********************
+![quant img](https://github.com/harshilbhatt2001/signal-processing/blob/mp3_enc/processing/mp3_encoder/images/quant.JPG)
