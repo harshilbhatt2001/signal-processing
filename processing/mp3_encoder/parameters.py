@@ -12,22 +12,22 @@ import sys
 import numpy as np
 
 
-FRAME_SIZE = 512            # Input buffer size
-FFT_SIZE = 512              # FFT number of points
-N_SUBBANDS = 32             # Number of subbands 
-SHIFT_SIZE = 32             # Input buffer shift size
-SLOT_SIZE = 32              # MPEG-1 Layer 1 slot size (minimum unit in bitstream)
-FRAMES_PER_BLOCK = 12       # Number of frames processed in one block
-SUB_SIZE = FFT_SIZE/2/N_SUBBANDS  
+FRAME_SIZE       = 512               # Input buffer size
+FFT_SIZE         = 512               # FFT number of points
+N_SUBBANDS       = 32                # Number of subbands 
+SHIFT_SIZE       = 32                # Input buffer shift size
+SLOT_SIZE        = 32                # MPEG-1 Layer 1 slot size (minimum unit in bitstream)
+FRAMES_PER_BLOCK = 12                # Number of frames processed in one block
+SUB_SIZE         = FFT_SIZE/2/N_SUBBANDS  
 
-INF = sys.maxsize           # Large Number to represent infinity
-EPS = 1e-6                  # Small number to avoid zero-division in log calculation
+INF = sys.maxsize                    # Large Number to represent infinity
+EPS = 1e-6                           # Small number to avoid zero-division in log calculation
 
 DBMIN = -200
 
-UNSET = 0
-TONE = 1                    # Flags used to denote tonal and noise components
-NOISE = 2
+UNSET  = 0
+TONE   = 1                           # Flags used to denote tonal and noise components
+NOISE  = 2
 IGNORE = 3
 
 
