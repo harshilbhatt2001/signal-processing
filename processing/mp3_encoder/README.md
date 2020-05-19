@@ -1,5 +1,22 @@
 # MP3 Encoder
 
+# Encoding a file with the final MP3 encoder
+
+To encode a WAVE file, run the program with the following command line arguments:
+```
+>> python encoder.py inwavfile.wav [outmp3file] bitrate
+
+```
+Supported bitrates are 64 kbps to 448 kbps in 32 kbps steps (e.g. 64, 128, 256,...), with lower bitrates indicating a higher the compression ratio (and therefore lower quality). If outmp3file is omitted, the same filename as input file is used, but with .mp3 extension. If there is an error reading the WAVE file, maybe its format is not supported by the WavRead class (currently only standard integer PCM WAVE files are supported).
+
+Two sample WAVE input files are provided, sampled at 44100Hz: 'sine.wav' - a stereo composed of 440 and 880 Hz sine waves, and 'saxophone.wav'. Try for instance:
+
+```
+>> python encoder.py samples/sine.wav samples/sine.mp3 320
+```
+
+
+
 # Lossy Compresion Scheme
 
 ![lossy](https://github.com/harshilbhatt2001/signal-processing/blob/mp3_enc/processing/mp3_encoder/images/lossy_intro.JPG)

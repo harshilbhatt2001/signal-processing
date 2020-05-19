@@ -42,7 +42,7 @@ class WavRead:
             self.nsamples = os.path.getsize(filename) * 8 / self.nbits / self.nch
         
         self.filename = filename
-        self.fp = open(self.filename, 'r')
+        self.fp = open(self.filename, 'rb')
 
         if filename[-3:] == 'wav':
             self.read_header()
